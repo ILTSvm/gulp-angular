@@ -1,0 +1,50 @@
+<div class = "container-fluid main-top" ng-controller = "main-ctrl">
+    <div class = "row">
+        <div class = "col-sm-8 col-md-8">
+            <h1><a href = "javascript:void(0)">{{title}}</a></h1>
+        </div>
+        <div class = "col-sm-4 col-md-4">
+            <span class = "glyphicon glyphicon-user"></span> 欢迎您:{{username}}
+            <a href="javascript:void(0)"><span class = "glyphicon glyphicon-envelope"></span> 消息</a>
+            <a href="javascript:void(0)"><span class = "glyphicon glyphicon-cog"></span> 设置</a>
+            <a href="javascript:void(0)"><span class = "glyphicon glyphicon-off"></span> 退出</a>
+            <form class="navbar-form pull-left">
+                <input type="text" class="form-control" placeholder = "输入您想要搜索的商品">
+                <button class="btn">搜索</button>
+            </form>
+        </div>
+       
+    </div>
+</div>
+<div class = "container-fluid main-bottom" ng-controller = "main-ctrl">
+    <div class = "row">
+        <div class = "col-sm-3 col-md-2 page-left">
+            <!--<ul class = "nav nav-pills  nav-stacked">
+                <li  ng-repeat = "nav in navlist"><a ui-sref = "{{nav.src}}">{{nav.name}}</a></li>
+            </ul>-->
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="row-fluid">
+                        <div class="offset1 span2">
+                            <div class = " sidebar-menu nav"> 
+                                <a ng-repeat-start = "nav in navlist" class="nav-header menu-first collapsed" data-toggle="collapse" href = "{{'#'+nav.to}}">{{nav.name}}</a>
+                                <ul id = "{{nav.to}}" class="nav nav-list collapse menu-second">
+                                    <li ng-repeat = "navs in nav.child"><a ui-sref = "{{navs.src}}" href = "javascript:void(0)">{{navs.name}}</a></li>
+                                </ul>
+                                <div class = "footer"   ng-repeat-end ></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div  class = "col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 page-right"  ui-view>
+            <div class="jumbotron">
+                <h2>欢迎来到后台管理系统</h2>
+                <p>？？？？</p>
+                <p><a class="btn btn-primary btn-md" href="#" role="button">注销</a></p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<table class= "table table-striped" ng-controller = "info-ctrl">
+    <thead>
+        <tr>
+            <th  ng-repeat = "th in info">{{th}}</th>
+        </tr>
+        <tr ng-repeat = "td in infomation">
+            <td>{{td._id}}</td>
+            <td><img src="../images/img.jpg"></td>
+            <td>{{td.name}}</td>
+            <td>{{td.price}}</td>
+            <td>{{Math.ceil(Math.random()*500)}}</td>
+            <td>{{(Math.random()*0.4)}}</td>
+            <td></td>
+        </tr>
+    </thead>
+</table>
