@@ -69,4 +69,7 @@ app.controller('main-ctrl',function($scope){
             ]
         }
     ];
+    // $scope.change = function(instance){
+    //     instance.name = $scope.test;
+    // };
 });

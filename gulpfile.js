@@ -94,6 +94,7 @@ gulp.task('default',function(){
     gulp.run('html');
     gulp.run('index');
     gulp.run('css');
+    gulp.run('sass');
     gulp.run('fonts');
     browserSync.init({
         server:{

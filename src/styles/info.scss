@@ -1,0 +1,16 @@
+.goodimg{
+    width:40px;
+    img{
+        width:100%;
+    }
+}
+.goodname{
+    display:block;
+    width:150px;
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;  
+}
+.info-pagelist{
+    float:right;
+}
