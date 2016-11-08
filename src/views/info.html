@@ -6,14 +6,15 @@
                     <th  ng-repeat = "th in info">{{th}}</th>
                 </tr>
             </thead>
-                <tr ng-repeat = "td in items | filter:name">
+                <tr ng-repeat = "td in test?infomation:items | filter:test">
                     <td>{{$index+1}}</td>
                     <td><div class = "goodimg"><img src="../images/img.jpg"></div></td>
                     <td><span class = "goodname">{{td.name}}</span></td>
+                    <td><span class = "goodcate">{{td.category}}</span></td>
                     <td>{{td.price}}</td>
                     <td>
-                        <a href = "javascript:void(0)" class = "change"><span class = "glyphicon glyphicon-pencil"></span></a>
-                        <a href = "javascript:void(0)" class = "delete"><span class = "glyphicon glyphicon-trash"></span></a>
+                        <a href = "javascript:void(0)" class = "change" ng-click = "toDetail(td)"><span class = "glyphicon glyphicon-pencil"></span></a>
+                        <a href = "javascript:void(0)" class = "delete" ng-click = "goodDelete($index)"><span class = "glyphicon glyphicon-trash"></span></a>
                     </td>
                 </tr>
         </table>
@@ -21,7 +22,7 @@
     <nav class = "info-pagelist">
         <ul class="pagination">
             <li><a href="javascript:void(0)" ng-click = "Previous()">&laquo;</a></li>
-            <li ng-repeat = "page in pageList" ng-class = "{active:isActivePage(page)}"><a ng-click = "selectPage(page)" href="javascript:void(0)">{{page}}</a></li>
+            <li ng-repeat = "page in pageList" ng-class = "{active:isActivePage(page)}"><a ng-click = "selectPage(page)" href="javascript:void(0)" style = "width:40px">{{page}}</a></li>
             <li><a href="javascript:void(0)" ng-click = "Next()">&raquo;</a></li>
         </ul>
     </nav>

@@ -1,33 +1,51 @@
-app.controller('info-ctrl',function($scope,$http){
-    $scope.info = ['商品id','商品预览','商品名称','商品价格','操作'];
+app.controller('info-ctrl',function($scope,$http,$rootScope,$state,$stateParams){
+    console.log($stateParams);
+    $scope.info = ['商品id','商品预览','商品名称','商品种类','商品价格','操作'];
     $scope.infomation = [];
-    $scope.count = Math.ceil(Math.random()*500);
+    $scope.count = Math.ceil(Math.random()*500); 
+    $scope.test = $rootScope.test;
+    if($scope.test&&$scope.test.length<=10){
+        $(".info-pagelist").hide();
+    }
     // $scope.add = function(instance){
     //     $scope.name = instance.name;
     // }
     // $http.get('http://10.9.163.104/goods/getData?pageindex=1&pagesize=10')
     $http.get('../mock/data.json')
     .success(function(response){
+        if($stateParams.obj!=""){
+            var changeInfo = JSON.parse($stateParams.obj);
+        }else{
+            var changeInfo ="";
+        }
         var goodinfo = [];
-        for(var i = 0;i<200;i++){
+        var count = 0;
+        for(var i = 0;i<1000;i++){
             //控制数量
+            if(response[i].name==changeInfo.name){
+                response[i]=changeInfo; 
+            }else if(changeInfo.name&&changeInfo.name!=""){
+                count++;
+            }
             goodinfo[i] = response[i];
         }
         $scope.infomation = goodinfo;
+        if(count==1000){
+            $scope.infomation.unshift(changeInfo);
+        }
         $scope.pageSize = 10;
         $scope.pages = Math.ceil($scope.infomation.length/$scope.pageSize);
         $scope.newPages = $scope.pages >5?5:$scope.pages;
         $scope.pageList = [];
         $scope.selPage = 1;
-        console.dir($scope.infomation);
         $scope.setData = function(){
             console.log(1);
             $scope.items = $scope.infomation.slice(($scope.pageSize*($scope.selPage-1)),($scope.selPage * $scope.pageSize));
-        }
+        };
         $scope.items = $scope.infomation.slice(0,$scope.pageSize);
         //分页要repeat的数组
-        for(var i = 0;i<$scope.newPages;i++){
-            $scope.pageList.push(i+1);
+        for(var j = 0;j<$scope.newPages;j++){
+            $scope.pageList.push(j+1);
         }
         //打印当前选中页搜索
         $scope.selectPage = function(page){
@@ -55,6 +73,16 @@ app.controller('info-ctrl',function($scope,$http){
         $scope.Next = function(){
             console.log($scope.items);
             $scope.selectPage($scope.selPage+1);
+        };
+        $scope.toDetail = function(obj){
+            console.log(obj);
+            var objStr = JSON.stringify(obj);
+            $state.go('main.detail',{obj:objStr}); 
+        };
+        $scope.goodDelete = function($index){
+            $scope.infomation.splice($index,1);
+            $scope.items.splice($index,1);
+            console.log($scope.infomation[$index]);
         };
     });
 }); 

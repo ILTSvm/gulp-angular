@@ -1,4 +1,4 @@
-app.controller('main-ctrl',function($scope){
+app.controller('main-ctrl',function($scope,$rootScope){
     $scope.title = '后台管理系统';
     $scope.logo = '';
     $scope.username = 'Heav3n';
@@ -28,13 +28,7 @@ app.controller('main-ctrl',function($scope){
                     src:'.info'
                 },{
                     name:'增加商品',
-                    src:''
-                },{
-                    name:'修改商品',
-                    src:''
-                },{
-                    name:'删除商品',
-                    src:''
+                    src:'.add'
                 }
             ]
         },{
@@ -69,7 +63,8 @@ app.controller('main-ctrl',function($scope){
             ]
         }
     ];
-    // $scope.change = function(instance){
-    //     instance.name = $scope.test;
-    // };
+    $scope.change = function(){
+        $rootScope.test=$scope.test;
+        console.log($rootScope.test);
+    };
 });

@@ -10,7 +10,7 @@
             <a href="javascript:void(0)"><span class = "glyphicon glyphicon-off"></span> 退出</a>
             <form class="navbar-form pull-left">
                 <input type="text" class="form-control" placeholder = "输入您想要搜索的商品" ng-model = "test">
-                <button class="btn" ng-click = "change()">搜索</button>
+                <button class="btn" ng-click = "change()" ui-sref = ".info" ui-sref-opts="{reload: true}" >搜索</button>
             </form>
         </div>
        
@@ -42,7 +42,7 @@
         <div  class = "col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 page-right"  ui-view>
             <div class="jumbotron">
                 <h2>欢迎来到后台管理系统</h2>
-                <p>？？？？</p>
+                <p>Heav3n</p>
                 <p><a class="btn btn-primary btn-md" href="#" role="button">注销</a></p>
             </div>
         </div>
