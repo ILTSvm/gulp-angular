@@ -2,11 +2,11 @@
 
 ###运行指令
 
--安装项目依赖
+安装项目依赖
 
 >npm install
  
--启动gulp服务
+启动gulp服务
 
 >gulp
 
