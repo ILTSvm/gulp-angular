@@ -6,7 +6,7 @@
 
 >npm install
  
-启动gulp服务
+启动服务
 
 >gulp
 
